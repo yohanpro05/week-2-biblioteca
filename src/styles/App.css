@@ -1,0 +1,219 @@
+/* ============================================
+   RESET Y BASE - Estilo Biblioteca Tierra Clara
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  background-color: #f9f5ef;              /* beige claro pergamino */
+  color: #3c2f2f;                         /* marrón suave texto */
+  line-height: 1.7;
+}
+
+/* Fondo sutil pergamino/madera */
+body {
+  background: linear-gradient(to bottom, #f9f5ef 0%, #f0e8d9 100%);
+}
+
+/* ============================================
+   LAYOUT
+   ============================================ */
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ============================================
+   HEADER - Verde oliva suave + dorado
+   ============================================ */
+
+.header {
+  background: #a8b5a2;                    /* verde oliva claro tierra */
+  color: #3c2f2f;
+  padding: 3rem 1rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-bottom: 5px solid #d4b996;       /* dorado madera claro */
+}
+
+.header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 0.6rem;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.header p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+  font-style: italic;
+}
+
+/* Ícono de libro en header (ajusta el emoji o usa SVG) */
+.header h1::before {
+  font-size: 1.2em;
+  margin-right: 0.3rem;
+}
+
+/* ============================================
+   FORM CONTAINER - Pergamino con borde madera
+   ============================================ */
+
+.form-container {
+  background: #fdfaf3;                    /* crema pergamino claro */
+  border-radius: 12px;
+  padding: 2.2rem;
+  margin: 2.5rem 0;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #d4c4b0;
+}
+
+.form-container h2 {
+  margin-bottom: 1.6rem;
+  color: #5d6b55;                         /* verde oliva oscuro suave */
+  font-size: 1.9rem;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  border-bottom: 2px solid #d4b996;
+  padding-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.form-container h2::before {
+  content: "✒️";
+  font-size: 1.4rem;
+}
+
+/* Inputs estilo pergamino */
+.form-group label {
+  font-weight: 600;
+  color: #5d6b55;
+  margin-bottom: 0.5rem;
+  display: block;
+  font-size: 1.05rem;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid #d4c4b0;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  background: #fffdf7;
+  color: #3c2f2f;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #a8b5a2;
+  box-shadow: 0 0 0 3px rgba(168, 181, 162, 0.15);
+}
+
+/* Checkbox */
+.form-group input[type="checkbox"] {
+  width: auto;
+  margin-right: 0.6rem;
+}
+
+/* ============================================
+   BUTTONS - Tonos tierra cálidos
+   ============================================ */
+
+.btn {
+  padding: 0.9rem 1.8rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-primary {
+  background-color: #8b9f80;              /* verde oliva tierra claro */
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #7a8e6f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(139, 159, 128, 0.25);
+}
+
+/* Botones edición/eliminación (ajusta según necesites) */
+.btn-edit {
+  background-color: #d4b996;
+  color: #3c2f2f;
+}
+
+.btn-edit:hover {
+  background-color: #c5a785;
+}
+
+.btn-delete {
+  background-color: #a67c52;
+  color: white;
+}
+
+.btn-delete:hover {
+  background-color: #946b41;
+}
+
+/* ============================================
+   EMPTY STATE - Mejorado y bonito
+   ============================================ */
+
+.empty-state {
+  text-align: center;
+  padding: 5rem 2rem;
+  background: #fdfaf3;
+  border-radius: 12px;
+  margin: 3rem 0;
+  border: 1px dashed #d4c4b0;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.empty-state img,
+.empty-state svg {
+  width: 140px;
+  height: 140px;
+  margin-bottom: 1.5rem;
+  opacity: 0.85;
+}
+
+.empty-state h3 {
+  font-size: 1.6rem;
+  color: #5d6b55;
+  margin-bottom: 0.8rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.empty-state p {
+  font-size: 1.15rem;
+  color: #6b5c4f;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .header h1 { font-size: 2.3rem; }
+  .form-container { padding: 1.6rem; }
+  .item-list { grid-template-columns: 1fr; }
+}
