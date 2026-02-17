@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Item } from './types';
+import { Book } from './types/index';
 import Header from './components/Header';
-import ItemForm from './components/ItemForm';
-import ItemList from './components/ItemList';
+import BookForm from './components/BookForm';
+import BookList from './components/BookList';
 
 /**
  * COMPONENTE PRINCIPAL: App
@@ -17,7 +17,7 @@ const App = () => {
 
   // TODO: Estado para la lista de elementos
   // Tip: Usa useState<Item[]>([])
-  const [items, setItems] = useState<Item[]>([]);
+  const [books, setBooks] = useState<Book[]>([]);
 
   // TODO: Estado para edición (id del elemento siendo editado)
   // Tip: Usa useState<number | null>(null)
@@ -29,20 +29,20 @@ const App = () => {
 
   /**
    * Agregar nuevo elemento
-   * @param item - Datos del nuevo elemento (sin id)
+   * @param book - Datos del nuevo elemento (sin id)
    */
-  const addItem = (item: Omit<Item, 'id'>): void => {
+  const addBook = (book: Omit<Book, 'id'>): void => {
     // TODO: Implementar
     // 1. Crear nuevo objeto con id único (Date.now())
     // 2. Agregar al array con spread operator: [...items, newItem]
     // 3. Usar setItems para actualizar el estado
 
-    const newItem: Item = {
-      ...item,
+    const newBook: Book = {
+      ...book,
       id: Date.now(), // Genera ID único basado en timestamp
     };
 
-    setItems([...items, newItem]);
+    setBooks([...books, newBook]);
   };
 
   /**
@@ -50,15 +50,15 @@ const App = () => {
    * @param id - ID del elemento a actualizar
    * @param updates - Propiedades a actualizar
    */
-  const updateItem = (id: number, updates: Partial<Item>): void => {
+  const updateBook = (id: number, updates: Partial<Book>): void => {
     // TODO: Implementar
     // 1. Usar map() para recorrer items
     // 2. Si item.id === id, crear nuevo objeto con {...item, ...updates}
     // 3. Si no, mantener el item sin cambios
     // 4. Usar setItems con el nuevo array
 
-    setItems(
-      items.map((item) => (item.id === id ? { ...item, ...updates } : item)),
+    setBooks(
+      books.map((book) => (book.id === id ? { ...book, ...updates } : book)),
     );
   };
 
@@ -66,13 +66,13 @@ const App = () => {
    * Eliminar elemento
    * @param id - ID del elemento a eliminar
    */
-  const deleteItem = (id: number): void => {
+  const deleteBook = (id: number): void => {
     // TODO: Implementar
     // 1. Usar filter() para crear nuevo array sin el elemento
     // 2. Condición: item.id !== id
     // 3. Usar setItems con el nuevo array
 
-    setItems(items.filter((item) => item.id !== id));
+    setBooks(books.filter((book) => book.id !== id));
   };
 
   /**
@@ -100,8 +100,8 @@ const App = () => {
 
   // TODO: Encontrar el elemento que se está editando
   // Tip: Usa find() con editingId
-  const itemToEdit = editingId
-    ? items.find((item) => item.id === editingId)
+  const bookToEdit = editingId
+    ? books.find((book) => book.id === editingId)
     : undefined;
 
   // ============================================
@@ -115,17 +115,17 @@ const App = () => {
 
       <div className="container">
         {/* Formulario para agregar/editar */}
-        <ItemForm
-          onAdd={addItem}
-          onUpdate={updateItem}
-          editingItem={itemToEdit}
+        <BookForm
+          onAdd={addBook}
+          onUpdate={updateBook}
+          editingBook={bookToEdit}
           onCancelEdit={cancelEdit}
         />
 
         {/* Lista de elementos */}
-        <ItemList
-          items={items}
-          onDelete={deleteItem}
+        <BookList
+          books={books}
+          onDelete={deleteBook}
           onEdit={startEdit}
         />
       </div>

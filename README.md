@@ -62,4 +62,4 @@ Haz clic en Editar → el formulario se pre-llena automáticamente
 Modifica y presiona Actualizar Libro
 Usa Cancelar para volver al modo agregar sin guardar
 Usa Eliminar para quitar un libro
-
+![alt text](image.png)

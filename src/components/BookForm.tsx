@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Item } from '../types';
+import { Book } from '../types/index';
 
 /**
  * PROPS: ItemForm
  */
-export interface ItemFormProps {
-  onAdd: (item: Omit<Item, 'id'>) => void;
-  onUpdate: (id: number, updates: Partial<Item>) => void;
-  editingItem?: Item;
+export interface BookFormProps {
+  onAdd: (book: Omit<Book, 'id'>) => void;
+  onUpdate: (id: number, updates: Partial<Book>) => void;
+  editingBook?: Book;
   onCancelEdit: () => void;
 }
 
@@ -17,10 +17,10 @@ export interface ItemFormProps {
  * Formulario para agregar o editar elementos.
  * Se adapta automáticamente según si hay un elemento siendo editado.
  */
-const ItemForm: React.FC<ItemFormProps> = ({
+const BookForm: React.FC<BookFormProps> = ({
   onAdd,
   onUpdate,
-  editingItem,
+  editingBook,
   onCancelEdit,
 }) => {
   // ============================================
@@ -45,8 +45,8 @@ const ItemForm: React.FC<ItemFormProps> = ({
 // Impacto: UX mucho más fluida, menos errores, flujo edición/creación consistente
 
   useEffect(() => {
-    if (editingItem) {
-     const {title, author, isbn, available, category } = editingItem;
+    if (editingBook) {
+     const {title, author, isbn, available, category } = editingBook;
     
     setFormData({
       title: title ?? initialState.title,
@@ -58,7 +58,7 @@ const ItemForm: React.FC<ItemFormProps> = ({
     } else {
       setFormData(initialState);
     }
-  }, [editingItem]);
+  }, [editingBook]);
 
   // ============================================
   // HANDLERS
@@ -165,8 +165,8 @@ const ItemForm: React.FC<ItemFormProps> = ({
 
     if (!validate()) return;
 
-    if (editingItem) {
-      onUpdate(editingItem.id, formData);
+    if (editingBook) {
+      onUpdate(editingBook.id, formData);
       onCancelEdit();
     } else {
       onAdd(formData);
@@ -199,7 +199,7 @@ const ItemForm: React.FC<ItemFormProps> = ({
   return (
     <div className="form-container">
      {/* Título dinámico según modo (agregar o editar) */} 
-      <h2>{editingItem ? ' Editar Libro' : ' Agregar Libro'}</h2>
+      <h2>{editingBook ? ' Editar Libro' : ' Agregar Libro'}</h2>
 
       <form onSubmit={handleSubmit} className="item-form">
         {/* Campo: Título - Obligatorio */}
@@ -254,6 +254,9 @@ const ItemForm: React.FC<ItemFormProps> = ({
             <option value="fiction">Ficción</option>
             <option value="non-fiction">No Ficción</option>
             <option value="science">Ciencia</option>
+            <option value="novels">Novelas</option>
+            <option value="romantic">Romántica</option>
+
           </select>
         </div>
           {/* Checkbox: Disponible */}
@@ -272,10 +275,10 @@ const ItemForm: React.FC<ItemFormProps> = ({
         {/* Botones */}
         <div className="form-actions">
           <button type="submit" className="btn btn-primary">
-            {editingItem ? 'Actualizar Libro' : 'Agregar Libro'}
+            {editingBook ? 'Actualizar Libro' : 'Agregar Libro'}
           </button>
         {/* Botón Cancelar - Solo visible en modo edición */}
-          {editingItem && (
+          {editingBook && (
             <button
               type="button"
               className="btn btn-secondary"
@@ -293,4 +296,4 @@ const ItemForm: React.FC<ItemFormProps> = ({
   );
 };
 
-export default ItemForm;
+export default BookForm;

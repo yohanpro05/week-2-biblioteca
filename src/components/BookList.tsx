@@ -1,11 +1,11 @@
-import { Item } from '../types';
-import ItemCard from './ItemCard';
+import { Book } from '../types/index';
+import BookCard from './BookCard';
 
 /**
  * PROPS: ItemList
  */
-interface ItemListProps {
-  items: Item[];
+interface BookListProps {
+  books: Book[];
   onDelete: (id: number) => void;
   onEdit: (id: number) => void;
 }
@@ -15,9 +15,9 @@ interface ItemListProps {
  *
  * Renderiza la lista de elementos usando .map()
  */
-const ItemList: React.FC<ItemListProps> = ({ items, onDelete, onEdit }) => {
+const BookList: React.FC<BookListProps> = ({ books, onDelete, onEdit }) => {
   // Manejar estado vacío
-  if (items.length === 0) {
+  if (books.length === 0) {
     return (
       <div className="empty-state">
         <p> No hay libros para mostrar</p>
@@ -33,17 +33,17 @@ const ItemList: React.FC<ItemListProps> = ({ items, onDelete, onEdit }) => {
   // ============================================
 
   return (
-    <div className="item-list">
+    <div className="Book-list">
       {/* TODO: Usar .map() para renderizar cada elemento */}
       {/* Recuerda:
         - SIEMPRE usar key única (item.id)
         - Pasar todas las props necesarias a ItemCard
         - Usar arrow functions para los callbacks
       */}
-      {items.map((item) => (
-        <ItemCard
-          key={item.id}
-          item={item}
+      {books.map((book) => (
+        <BookCard
+          key={book.id}
+          book={book}
           onDelete={onDelete}
           onEdit={onEdit}
         />
@@ -52,4 +52,4 @@ const ItemList: React.FC<ItemListProps> = ({ items, onDelete, onEdit }) => {
   );
 };
 
-export default ItemList;
+export default BookList;

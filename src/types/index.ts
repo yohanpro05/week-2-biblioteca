@@ -16,7 +16,7 @@
 
 // TODO: Define la interface principal de tu dominio
 // Ejemplo para referencia (ELIMINAR y reemplazar con tu dominio):
-export interface Item {
+export interface Book {
   id: number;
   title: string;
   author: string;
@@ -27,7 +27,7 @@ export interface Item {
 
 // TODO: Si necesitas tipos adicionales, defínelos aquí
 // Ejemplos:
-export type Category = 'fiction' | 'non-fiction' | 'science'; // Biblioteca
+export type Category = 'fiction' | 'non-fiction' | 'science' | 'novels' | 'romantic'; // Biblioteca
 
 // TODO: Interface para props de formulario (opcional)
 export interface FormData {

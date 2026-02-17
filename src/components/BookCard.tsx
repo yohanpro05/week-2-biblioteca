@@ -1,10 +1,10 @@
-import { Item } from '../types';
+import { Book } from '../types/index';
 
 /**
- * PROPS: ItemCard
+ * PROPS: BookCard
  */
-interface ItemCardProps {
-  item: Item;
+interface BookCardProps {
+  book: Book;
   onDelete: (id: number) => void;
   onEdit: (id: number) => void;
 }
@@ -15,7 +15,7 @@ interface ItemCardProps {
  * Tarjeta individual para mostrar un elemento.
  * Adapta la visualización a tu dominio específico.
  */
-const ItemCard: React.FC<ItemCardProps> = ({ item, onDelete, onEdit }) => {
+const BookCard: React.FC<BookCardProps> = ({ book, onDelete, onEdit }) => {
   // ============================================
   // HANDLER: CONFIRMAR ELIMINACIÓN
   // ============================================
@@ -27,7 +27,7 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onDelete, onEdit }) => {
     //   onDelete(item.id);
     // }
 
-    onDelete(item.id);
+    onDelete(book.id);
   };
 
   // ============================================
@@ -35,15 +35,15 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onDelete, onEdit }) => {
   // ============================================
 
   return (
-    <div className="item-card">
+    <div className="book-card">
       {/* Información principal */}
-      <div className="item-card__header">
-        <h3 className="item-card__title">{item.title}</h3>
+      <div className="book-card__header">
+        <h3 className="book-card__title">{book.title}</h3>
 
         {/* TODO: Agregar badge/etiqueta según tu dominio */}
         {
-          <span className={`badge badge--${item.available ? 'success' : 'danger'}`}>
-                          {item.available ? 'Disponible' : 'Prestado'}
+          <span className={`badge badge--${book.available ? 'success' : 'danger'}`}>
+                          {book.available ? 'Disponible' : 'Prestado'}
                         </span>
           /*- Farmacia: <span className="badge badge--info">{item.category}</span>
           - Gimnasio: <span className={`badge badge--${item.active ? 'success' : 'secondary'}`}>
@@ -53,30 +53,30 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onDelete, onEdit }) => {
       </div>
 
       {/* Información detallada */}
-      <div className="item-card__body">
+      <div className="book-card__body">
 {/* TODO: Mostrar propiedades específicas de tu dominio */}
-         <p><strong>Título:</strong> {item.title}</p>
-          <p><strong>Author:</strong> {item.author}</p>
-          <p><strong>ISBN:</strong> {item.isbn}</p>
+         <p><strong>Título:</strong> {book.title}</p>
+          <p><strong>Author:</strong> {book.author}</p>
+          <p><strong>ISBN:</strong> {book.isbn}</p>
       
-          <p className="item-card__placeholder">
+          <p className="book-card__placeholder">
           {/*TODO: Agregar propiedades de tu dominio aquí*/}
         </p>
       </div>
 
       {/* Acciones */}
-      <div className="item-card__actions">
+      <div className="book-card__actions">
         <button
           className="btn btn-edit"
-          onClick={() => onEdit(item.id)}
-          aria-label={`Editar ${item.title}`}>
+          onClick={() => onEdit(book.id)}
+          aria-label={`Editar ${book.title}`}>
           Editar
         </button>
 
         <button
           className="btn btn-delete"
           onClick={handleDelete}
-          aria-label={`Eliminar ${item.title}`}>
+          aria-label={`Eliminar ${book.title}`}>
           Eliminar
         </button>
       </div>
@@ -84,4 +84,4 @@ const ItemCard: React.FC<ItemCardProps> = ({ item, onDelete, onEdit }) => {
   );
 };
 
-export default ItemCard;
+export default BookCard;
